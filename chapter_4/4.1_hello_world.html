@@ -8,14 +8,23 @@
     <script src='../angular.min.js'></script>
 </head>
 <body>
-    <div ng-app='myApp'>
-        <h1>hello {{ name }}</h1>
+    <div ng-app='myApp' ng-controller='myCtrl'>
+        <h1>hello {{ nickname }}</h1>
+    </div>
+    <div ng-app='ourApp'>
+            <h1>hello {{ name }}</h1>
+
     </div>
     <script>
-        angular.module('myApp',[])
+        angular.module('ourApp',[])
             .run(function($rootScope){
                 $rootScope.name = 'world';
             });
+    </script>
+    <script>
+        angular.module('myApp',[]).controller('myCtrl',function($scope){
+            $scope.nickname = 'earth';
+        });
     </script>
 </body>
 </html>
