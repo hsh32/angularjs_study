@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>hello</title>
+    <script src="../angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="MyApp"ng-contoller="MyController">
+        <input ng-model="person.username" type="text" placeholder="请输入你的姓名">
+        <h1>Hello {{ person.username }}</h1>
+        <h2>时间: {{ clock }}</h2> <!--没有用...-->
+    </div>
+    <script>
+        var app = angular.module('MyApp',[]);
+
+        app.controller('MyController',function($scope, $timeout){
+            var updateClock = function(){
+                $scope.clock = new Date();
+                $timeout(function(){
+                    updateClock();
+                }, 1000);
+            };
+            updateClock();
+        });
+    </script>
+</body>
+</html>
