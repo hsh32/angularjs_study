@@ -9,14 +9,13 @@
 </head>
 <body>
     <div ng-app='MyApp' ng-controller='MyController'>
-        姓: <input type="text" ng-model='firstname'>
-        名: <input type="text" ng-model='lastname'>
-        <br>
-        姓名: {{ firstname }}{{ lastname }}
-        <br>
-        {{ fullname() }}
+       <ul>
+           <li ng-repeat='x in names'>
+                {{x.name}}:{{x.country}}
+           </li>
+       </ul>
 
     </div>
-    <script src='./js/3_ng-controller.js'></script>
+    <script src='./js/3_ng-controller_name_country.js'></script>
 </body>
 </html>
