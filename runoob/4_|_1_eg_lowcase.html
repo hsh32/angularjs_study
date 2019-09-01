@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='../angular.min.js'></script>
+</head>
+<body>
+    <div ng-app='MyApp' ng-controller='MyController'>
+        国家:<input type="text" ng-model='country'>
+       <ul>
+           <li ng-repeat='x in names | orderBy:"country" | filter:country'> <!-- 此处country 没有引号-->
+                {{x.name | lowercase}}:{{x.country | uppercase}}
+           </li>
+       </ul>
+        单价: <input type="text" ng-model='unit_price'>
+        数量: <input type="text" ng-model='quantity'>
+        总价: {{ unit_price * quantity | currency: '¥'}}  <!--冒号是很关键的一个符号-->
+    </div>
+    <script>
+        var app = angular.module('MyApp',[]);
+        app.controller('MyController',function($scope){
+            $scope.names = [
+                {name:'k',country:'China'}, // 'name' ---> 写成name就好了.相当于一个属性.
+                {name:'a',country:'India'}, // 'name' ---> 写成name就好了.相当于一个属性.
+                {name:'S',country:'China'},
+                {name:'I',country:'Canada'},
+            ]
+
+        });
+    </script>
+</body>
+</html>
