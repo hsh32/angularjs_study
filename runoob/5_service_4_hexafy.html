@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src='../angular.min.js'></script>
+<body>
+	<div ng-app='MyApp' ng-controller='MyController'>
+		{{ hex }}
+		<ul>
+			<li ng-repeat='x in counts'>
+				{{ x | myFormat }}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module('MyApp',[]);
+		app.service('hexafy',function(){
+			this.myFunc = function(x){
+				return x.toString(16);
+			};
+		})
+		app.filter('myFormat',['hexafy', function(hexafy){
+			return function(x){
+				return hexafy.myFunc(x);
+			}
+		}])
+		app.controller('MyController',function($scope, hexafy){
+			$scope.hex = hexafy.myFunc(255);
+			$scope.counts = [
+			1,2,3,4,5,
+			10,20,30
+			];
+		});
+		
+
+	</script>
+</body>
+</html>

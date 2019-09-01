@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src='../angular.min.js'></script>
+<body>
+	<div ng-app='MyApp' ng-controller='MyController'>
+		{{ myHeader }}
+		时间:{{ theTime }}
+	</div>
+	<script type="text/javascript">
+		var app = angular.module('MyApp',[]);
+		app.controller('MyController',function($scope,$timeout,$interval){
+			$scope.myHeader = 'How are you today?'
+			$timeout(function(){
+				$scope.myHeader = 'I\'m fine,thankyou and you?'
+			},2000);
+			$timeout(function(){
+				$scope.myHeader = 'Me,too,hahaha!'
+			},4000);
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function(){
+				$scope.theTime = new Date().toLocaleTimeString();
+			},1000);
+		});
+	</script>
+</body>
+</html>

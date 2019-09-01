@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src='../angular.min.js'></script>
+<body>
+	<div ng-app='HttpApp' ng-controller='HttpController'>
+		当前url:{{ myhttp }}
+	</div>
+	<script type="text/javascript">
+		var app = angular.module('HttpApp',[]);
+		app.controller('HttpController',function($scope,$http){
+			$http.get('./5_service_1_http.html').then(function(response){
+				$scope.myttp = response.data;
+			});
+		});
+	</script>
+</body>
+</html>
