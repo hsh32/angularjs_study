@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src='../angular.min.js'></script>
+<body>
+	<div ng-app='UrlApp' ng-controller='UrlController'>
+		当前url:{{ myurl }}
+	</div>
+	<script type="text/javascript">
+		var app = angular.module('UrlApp',[]);
+		app.controller('UrlController',function($scope,$location){
+				$scope.myurl = $location.absUrl();
+		});
+	</script>
+</body>
+</html>
